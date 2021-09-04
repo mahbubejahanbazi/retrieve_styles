@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="normal">0</integer>
+    <integer name="bold">1</integer>
+</resources>

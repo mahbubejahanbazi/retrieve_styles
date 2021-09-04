@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="FILL_NORMAL_COLOR_TEST" format="color" />
+    <attr name="FILL_PRESSED_COLOR_TEST" format="color" />
+    <attr name="STROKE_WIDTH_TEST" format="dimension" />
+    <attr name="STROKE_COLOR_TEST" format="color" />
+    <attr name="RADIUS_TEST" format="dimension" />
+    <attr name="TEXT_COLOR_TEST" format="color" />
+    <attr name="TEXT_SIZE_TEST" format="dimension" />
+    <attr name="DRAWABLE_BOTTOM_PADDING_TEST" format="dimension" />
+    <attr name="DRAWABLE_LEFT_PADDING_TEST" format="dimension" />
+    <attr name="DRAWABLE_TOP_PADDING_TEST" format="dimension" />
+    <attr name="DRAWABLE_RIGHT_PADDING_TEST" format="dimension" />
+    <attr name="FONT_FAMILY_TEST" format="reference" />
+    <attr name="FONT_STYLE_TEST" format="integer" />
+</resources>

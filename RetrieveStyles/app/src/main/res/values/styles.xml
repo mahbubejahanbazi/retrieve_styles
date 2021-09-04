@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="button_style_1">
+
+        <item name="DRAWABLE_BOTTOM_PADDING_TEST">0dp</item>
+        <item name="DRAWABLE_LEFT_PADDING_TEST">0dp</item>
+        <item name="DRAWABLE_RIGHT_PADDING_TEST">0dp</item>
+        <item name="DRAWABLE_TOP_PADDING_TEST">0dp</item>
+        <item name="FILL_NORMAL_COLOR_TEST">@color/button_default</item>
+        <item name="FILL_PRESSED_COLOR_TEST">@color/button_pressed</item>
+        <item name="RADIUS_TEST">8dp</item>
+        <item name="STROKE_COLOR_TEST">@color/button_stroke_color</item>
+        <item name="STROKE_WIDTH_TEST">1.5dp</item>
+        <item name="TEXT_COLOR_TEST">@color/button_text</item>
+        <item name="TEXT_SIZE_TEST">18sp</item>
+        <item name="FONT_FAMILY_TEST">@font/quicksand_bold</item>
+        <item name="FONT_STYLE_TEST">0</item>
+
+    </style>
+</resources>
