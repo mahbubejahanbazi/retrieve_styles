@@ -23,15 +23,10 @@ class CustomButton : AppCompatButton, View.OnTouchListener {
     private var pxInsideRadius: Float = 0f
     private var isClicked: Boolean = false
     private var buttonLabel: String = ""
-    private var drawableLeftPadding: Float = 0f
-    private var drawableTopPadding: Float = 0f
-    private var drawableRightPadding: Float = 0f
-    private var drawableBottomPadding: Float = 0f
 
     private var outsideRect: RectF = RectF()
     private var insideRect: RectF = RectF()
     private var bounds: Rect = Rect()
-    private var rectDrawable: Rect = Rect()
 
     private var paintDefaultRectInside = Paint()
     private var paintPressedRectInside = Paint()
@@ -49,19 +44,15 @@ class CustomButton : AppCompatButton, View.OnTouchListener {
     }
 
     constructor(context: Context) : super(context) {
-        loadStyle()
+        retrieveStyle()
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        loadStyle()
+        retrieveStyle()
     }
 
-    fun loadStyle() {
+    fun retrieveStyle() {
         val attrs: IntArray = intArrayOf(
-            resources.getIdentifier("DRAWABLE_BOTTOM_PADDING_TEST", "attr", context.packageName),
-            resources.getIdentifier("DRAWABLE_LEFT_PADDING_TEST", "attr", context.packageName),
-            resources.getIdentifier("DRAWABLE_RIGHT_PADDING_TEST", "attr", context.packageName),
-            resources.getIdentifier("DRAWABLE_TOP_PADDING_TEST", "attr", context.packageName),
             resources.getIdentifier("FILL_NORMAL_COLOR_TEST", "attr", context.packageName),
             resources.getIdentifier("FILL_PRESSED_COLOR_TEST", "attr", context.packageName),
             resources.getIdentifier("FONT_FAMILY_TEST", "attr", context.packageName),
@@ -78,10 +69,6 @@ class CustomButton : AppCompatButton, View.OnTouchListener {
         var index = 0
 
         //retrieving style items
-        drawableBottomPadding = ta.getDimension(index++, 0f)
-        drawableLeftPadding = ta.getDimension(index++, 0f)
-        drawableRightPadding = ta.getDimension(index++, 0f)
-        drawableTopPadding = ta.getDimension(index++, 0f)
         paintDefaultRectInside.color = ta.getColor(index++, Color.RED)
         paintPressedRectInside.color = ta.getColor(index++, Color.YELLOW)
         customFontFamily = ta.getResourceId(index++, 0)
@@ -114,70 +101,6 @@ class CustomButton : AppCompatButton, View.OnTouchListener {
         paintRectOutside.style = Paint.Style.FILL
     }
 
-    fun seCustomTextColor(textColor: Int) {
-        paintText.color = textColor
-        prepareDraw()
-    }
-
-    fun setCustomTextSize(textSize: Float) {
-        paintText.textSize = dp2Pixel(textSize)
-        prepareDraw()
-    }
-
-    fun setCustomRadius(radius: Float) {
-        this.pxRadius = dp2Pixel(radius)
-        prepareDraw()
-    }
-
-    fun setInsidePressedColor(insidePressedColor: Int) {
-        paintPressedRectInside.color = insidePressedColor
-        prepareDraw()
-    }
-
-    fun setInsideDefaultColor(insideDefaultColor: Int) {
-        paintDefaultRectInside.color = insideDefaultColor
-        prepareDraw()
-    }
-
-    fun setCustomStrokeColor(cbStrokeColor: Int) {
-        paintRectOutside.color = cbStrokeColor
-        prepareDraw()
-    }
-
-    fun setCustomStrokeWidth(strokeWidth: Float) {
-        this.pxStrokeWidth = dp2Pixel(strokeWidth)
-        prepareDraw()
-    }
-
-    fun setDrawableTopPadding(padding: Float) {
-        this.drawableTopPadding = dp2Pixel(padding)
-        prepareDraw()
-    }
-
-    fun setDrawableRightPadding(padding: Float) {
-        this.drawableRightPadding = dp2Pixel(padding)
-        prepareDraw()
-    }
-
-    fun setDrawableBottomPadding(padding: Float) {
-        this.drawableBottomPadding = dp2Pixel(padding)
-        prepareDraw()
-    }
-
-    fun setDrawableLeftPadding(padding: Float) {
-        this.drawableLeftPadding = dp2Pixel(padding)
-        prepareDraw()
-    }
-
-    fun setCustomFontFamily(cbFontFamily: Typeface) {
-        paintText.typeface = cbFontFamily
-        prepareDraw()
-    }
-
-    fun setCustomFontStyle(cbFontStyle: Int) {
-        paintText.isFakeBoldText = if (cbFontStyle == context.resources.getInteger(R.integer.bold)) true else false
-        prepareDraw()
-    }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
@@ -200,13 +123,6 @@ class CustomButton : AppCompatButton, View.OnTouchListener {
             pxStrokeWidth,
             (width - pxStrokeWidth),
             (height - pxStrokeWidth)
-        )
-
-        rectDrawable = Rect(
-            (pxStrokeWidth + drawableLeftPadding).toInt(),
-            (pxStrokeWidth + drawableTopPadding).toInt(),
-            (width - pxStrokeWidth - drawableRightPadding).toInt(),
-            (height - pxStrokeWidth - drawableBottomPadding).toInt()
         )
 
         //calculating position of text
@@ -265,8 +181,4 @@ class CustomButton : AppCompatButton, View.OnTouchListener {
         return true
     }
 
-    private fun dp2Pixel(dp: Float): Float {
-        val density = context.resources.displayMetrics.density
-        return (dp * density)
-    }
 }
